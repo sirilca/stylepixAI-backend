@@ -1,0 +1,24 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+lib-cov
+*.seed
+*.pid
+*.lock
+*.log
+*.lstat
+
+# Debug log files
+npm-debug.log
+yarn-error.log

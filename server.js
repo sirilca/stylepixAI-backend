@@ -38,10 +38,9 @@ const texttoimg = async (req, res, next) => {
                 width: 600,
                 height: 600,
                 prompt: question,
-                scheduler: "K_EULER_ANCESTRAL",
-                guidance_scale: 3,
-                apply_watermark: false,
-                negative_prompt: "",
+                scheduler: "K_EULER",
+                num_outputs: 1,
+                guidance_scale: 7.5,
                 num_inference_steps: 50
             }
         }

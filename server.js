@@ -27,21 +27,21 @@ const mon = mongoose.model('textimage', datachema)
 const texttoimg = async (req, res, next) => {
     const { question } = req.body
     console.log(question)
+
     const replicate = new Replicate({
-        auth: "r8_OdCuHKrRXdWMheUrW5YlO6iyQbmkc640oFA1Q",
+        auth: "r8_DzemOICYnzyw41mKX0cjOYXJvz1w1ao1iKZEY",
     });
 
     const output = await replicate.run(
-        "playgroundai/playground-v2-1024px-aesthetic:42fe626e41cc811eaf02c94b892774839268ce1994ea778eba97103fe1ef51b8",
+        "stability-ai/stable-diffusion:ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4",
         {
             input: {
-                width: 600,
-                height: 600,
-                prompt: question,
-                scheduler: "K_EULER_ANCESTRAL",
-                guidance_scale: 3,
-                apply_watermark: false,
-                negative_prompt: "",
+                width: 768,
+                height: 768,
+                prompt: "an astronaut riding a horse on mars, hd, dramatic lighting",
+                scheduler: "K_EULER",
+                num_outputs: 1,
+                guidance_scale: 7.5,
                 num_inference_steps: 50
             }
         }
@@ -59,8 +59,8 @@ app.post('/saveimage', texttoimg, async (req, res) => {
         const savedata_url = "data:image/jpeg;base64," + base64data
         const sdata = new mon({ image_data: savedata_url, iname: question })
         await sdata.save()
-        res.send(textval)
     })
+    res.send(textval)
 })
 
 app.get('/images', async (req, res) => {

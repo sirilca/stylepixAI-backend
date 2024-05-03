@@ -28,16 +28,16 @@ const texttoimg = async (req, res, next) => {
     const { question } = req.body
     console.log(question)
     const replicate = new Replicate({
-        auth: "r8_Sg7YJKmROQ2gS7hznNx9Wtr0FbDL7dd3OiV8i",
+        auth: "r8_RpfF3vY7g2pFCKdTQhhBNIrTqDzTU3g2P5dEu",
     });
 
     const output = await replicate.run(
         "stability-ai/stable-diffusion:ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4",
         {
             input: {
-                width: 600,
-                height: 600,
-                prompt: question,
+                width: 768,
+                height: 768,
+                prompt: "an astronaut riding a horse on mars, hd, dramatic lighting",
                 scheduler: "K_EULER",
                 num_outputs: 1,
                 guidance_scale: 7.5,
